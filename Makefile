@@ -19,7 +19,7 @@ SAMPLECONTENTS=$(SAMPLE).tex
 SAMPLEBIB=$(SAMPLE).bib
 INSTITUTE_LOGO=njulogo.eps
 INSTITUTE_NAME=njuname.eps
-TEXMFLOCAL=$(shell get_texmf_dir.sh)
+TEXMFLOCAL=$(shell sh get_texmf_dir.sh)
 
 .PHONY: all clean cls doc sample
 
