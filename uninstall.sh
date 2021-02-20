@@ -8,8 +8,8 @@
 ###############################################################################
 TEXMFLOCAL=$(sh get_texmf_dir.sh)
 
-TEX_DIR=$TEXMFLOCAL/tex/latex/njuthesis
-DOC_DIR=$TEXMFLOCAL/doc/latex/njuthesis
+TEX_DIR=$TEXMFLOCAL/tex/latex/scutthesis
+DOC_DIR=$TEXMFLOCAL/doc/latex/scutthesis
 BST_FILE=$TEXMFLOCAL/bibtex/bst/gbt7714-2005.bst
 
 if [ -d "$TEX_DIR" ]; then

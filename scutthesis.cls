@@ -1,10 +1,10 @@
 %%
-%% This is file `njuthesis.cls',
+%% This is file `scutthesis.cls',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
 %%
-%% njuthesis.dtx  (with options: `cls')
+%% scutthesis.dtx  (with options: `cls')
 %% This is a generated file.
 %% 
 %% Copyright (C) 2013-2017, Haixing Hu.
@@ -24,7 +24,7 @@
 %% To produce the documentation run the original source files ending with `.dtx'
 %% through LaTeX.
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{njuthesis.cls}
+\ProvidesClass{scutthesis.cls}
  [2018/08/07 v1.2.2 Document Class for the Degree Papers of Nanjing University]
 \newif\ifnjut@adobefonts\njut@adobefontstrue
 \newif\ifnjut@winfonts\njut@winfontsfalse
@@ -124,7 +124,7 @@
 \RequirePackage{ifthen}
 \RequirePackage[perpage,symbol*]{footmisc}
 \RequirePackage{etoolbox}
-\input{njuthesis.cfg}
+\input{scutthesis.cfg}
 \ifnjut@adobefonts
   \newcommand*{\njut@zhfn@songti}{\njut@zhfn@songti@adobe}
   \newcommand*{\njut@zhfn@heiti}{\njut@zhfn@heiti@adobe}
@@ -161,7 +161,7 @@
           \newcommand*{\njut@enfn@sans}{\njut@enfn@sans@mac}
           \newcommand*{\njut@enfn@mono}{\njut@enfn@mono@mac}
        \else
-         \ClassError{njuthesis}{No fonts was selected.}{}
+         \ClassError{scutthesis}{No fonts was selected.}{}
        \fi
     \fi
   \fi
@@ -291,7 +291,7 @@
     \or \fontsize\njut@fs@sfour\njut@fs@sfourskip%
     \or \fontsize\njut@fs@sfive\njut@fs@sfiveskip%
     \or \fontsize\njut@fs@ssix\njut@fs@ssixskip%
-    \else \ClassError{njuthesis}{%
+    \else \ClassError{scutthesis}{%
             Undefined Chinese font size in command \protect\zihao}{%
             The old font size is used if you continue.}%
     \fi%
@@ -307,7 +307,7 @@
     \or \fontsize\njut@fs@six\njut@fs@sixskip%
     \or \fontsize\njut@fs@seven\njut@fs@sevenskip%
     \or \fontsize\njut@fs@eight\njut@fs@eightskip%
-    \else \ClassError{njuthesis}{%
+    \else \ClassError{scutthesis}{%
             Undefined Chinese font size in command \protect\zihao}{%
             The old font size is used if you continue.}%
     \fi%
@@ -852,7 +852,6 @@
   \begin{center}
     \vskip 10mm
     \includegraphics[width=1.96cm]{\njut@cap@institute@logo} \\
-    \includegraphics[height=2cm]{\njut@cap@institute@name} \\
     \vskip 8mm
     {\bf\kaishu\zihao{1}\makebox[10em][s]{\njut@cap@cover@thesis}}\\
     \vskip 5mm
@@ -1106,7 +1105,7 @@
   \normalfont
   \cleardoublepage
 }
-\newcommand{\njuthesis}{\texttt{NJU-Thesis}}
+\newcommand{\scutthesis}{\texttt{NJU-Thesis}}
 \newcommand{\zhdash}{\kern0.3ex\rule[0.8ex]{2em}{0.1ex}\kern0.3ex}
 \newcommand{\cell}[3]{\parbox[c][#2][c]{#1}{\makebox[#1]{#3}}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\%
@@ -1143,4 +1142,4 @@
 \AtBeginDocument{\njut@setpdfinfo}
 \endinput
 %%
-%% End of file `njuthesis.cls'.
+%% End of file `scutthesis.cls'.
