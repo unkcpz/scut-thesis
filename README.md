@@ -1,21 +1,24 @@
-# NJU-Thesis
+# SCUT-Thesis
+该模板从南京大学学位论文模板项目版本Aug 8, 2018时的[commit-40387c1](https://github.com/Haixing-Hu/nju-thesis/commit/04387c17e758a89dbb140ca0c34fa72696954ac3)fork而来，保留先前所有提交并加入华南理工大学学位论文的相关要求。
 
-本项目提供了一个用于排版南京大学学位论文的XeLaTeX模板。该模板严格遵循南京大学学术委员会对学位论文的排版格式要求以及相应的国家标准规范，可帮助南京大学的同学们方便地排版出漂亮的学位论文。
+该模板旨在提供符合华南理工大学学位论文排版规范的latex模板，通过修改原项目中的`dtx`模板定义文件和替换原项目中与南京大学相关的logo排版要求等，以符合华南理工大学学位论文排版规范。
+该仓库用于存放用于模板文档与生成模板文件所需的原文件、生成的模板文件。推荐直接通过overleaf上的对应[模板项目]()直接使用该模板。
 
-目前该模板支持排版博士、硕士和学士的学位论文。
-
-虽然该模板主要用于排版南京大学的学位论文，但亦可经过简单的设置或修改用于排版国内其他大学的学位论文。
+该模板严格遵循华南理工大学学术委员会对学位论文的排版格式要求以及相应的国家标准规范，可帮助华南理工大学的同学们方便地排版出漂亮的学位论文。
 
 ## 项目主页
 
-本项目主页地址为：[http://haixing-hu.github.io/nju-thesis/][homepage]
+原项目主页地址为：[http://haixing-hu.github.io/nju-thesis/][homepage]
+
+当前项目仓库：[https://github.com/unkcpz/scut-thesis/][scut-thesis]
 
 [homepage]: http://haixing-hu.github.io/nju-thesis/
+[scut-thesis]: https://github.com/unkcpz/scut-thesis/
 
 ## 功能特色
 
-* 此模版用于生成符合南京大学学位论文排版要求和相应的国家规范、行业标准的学位论文；
-* 可排版博士、硕士、学士学位论文；
+* 此模版用于生成符合华南理工大学学位论文排版要求和相应的国家规范、行业标准的学位论文；
+* （？）可排版博士、硕士、学士学位论文；
 * 使用XeLaTeX作为排版引擎，论文源码需要使用UTF-8编码；
 * 自动生成国家图书馆封面、中文封面、英文封面、中文摘要页、英文摘要页、学位论文出版授权书等必需页面；
 
@@ -52,29 +55,26 @@
 
 [gbt12450-2001]: https://github.com/Haixing-Hu/typesetting-standard/raw/master/%E5%85%B6%E4%BB%96/%E3%80%90GB:T%2012450-2001%E3%80%91%E5%9B%BE%E4%B9%A6%E4%B9%A6%E5%90%8D%E9%A1%B5.pdf
 
-## 下载
-
-* [下载tar.gz压缩包][targz]，适合Linux/Mac用户
-* [下载zip压缩包][zip]，适合Windows用户
-
-[targz]: https://github.com/Haixing-Hu/nju-thesis/tarball/master
-[zip]: https://github.com/Haixing-Hu/nju-thesis/zipball/master
-
-## 安装使用
+## 安装使用（？）
 
 编译此模板前需在系统中安装Adobe中文字体：<https://github.com/Haixing-Hu/font/tree/master/unicode>
 
 参见[模板文档][templatedoc]和[用户手册][manual]中相关章节的详细说明。
 
+推荐直接通过overleaf上的对应[模板项目][overleaf]直接使用该模板。
+
 [templatedoc]: https://raw.github.com/Haixing-Hu/nju-thesis/master/njuthesis.pdf
 [manual]: https://raw.github.com/Haixing-Hu/nju-thesis/master/manual/njuthesis-manual.pdf
+[overleaf]: https://eee.com
 
 ## 相关项目
 
+* [华南理工大学研究生学位论文撰写规范][scut-spec]
 * [南京大学科技报告XeLaTeX模板][nju-report]
 * [符合国家标准《GB/T 7714-2005 文后参考文献著录规则》的BibTeX样式文件][gbt7714-2005-bst]
 * [中文书刊排版相关标准和规范][typesetting-standard]
 
+[scut-spec]: https://www2.scut.edu.cn/graduate/2020/0507/c15624a375708/page.htm
 [nju-report]: https://github.com/Haixing-Hu/nju-report
 [gbt7714-2005-bst]: https://github.com/Haixing-Hu/GBT7714-2005-BibTeX-Style
 [typesetting-standard]: https://github.com/Haixing-Hu/typesetting-standard
