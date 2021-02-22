@@ -6,21 +6,21 @@
 %%
 %% scutthesis.dtx  (with options: `cls')
 %% This is a generated file.
-%%
+%% 
 %% Copyright (C) 2013-2017, Haixing Hu.
 %% Department of Computer Science and Technology, Nanjing University.
-%%
+%% 
 %% Home Page of the Project: http://haixing-hu.github.io/nju-thesis/
-%%
+%% 
 %% It may be distributed and/or modified under the conditions of the LaTeX Project
 %% Public License, either version 1.2 of this license or (at your option) any
 %% later version.  The latest version of this license is in
-%%
+%% 
 %%    http://www.latex-project.org/lppl.txt
-%%
+%% 
 %% and version 1.2 or later is part of all distributions of LaTeX version
 %% 1999/12/01 or later.
-%%
+%% 
 %% To produce the documentation run the original source files ending with `.dtx'
 %% through LaTeX.
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
@@ -509,11 +509,7 @@
 \renewcommand{\footrulewidth}{0pt}
 \renewcommand{\headrulewidth}{1pt}
 \fancyhead{}  % override fancyhead to none.
-<<<<<<< HEAD
 \fancyhead[CE]{华南理工大学{\njut@value@degree}学位论文}
-=======
-\fancyhead[CE]{华南理工大学博士学位论文} % TODO: 分支适应其他学位
->>>>>>> ced216c (更新中文封面为华工格式)
 \fancyhead[CO]{\leftmark}
 \pagestyle{fancy}
 \renewcommand{\chaptermark}[1]{\markboth{%
@@ -761,6 +757,8 @@
   \renewcommand{\njut@value@en@department}{#1}}
 \newcommand{\englishinstitute}[1]{%
   \renewcommand{\njut@value@en@institute}{#1}}
+\newcommand{\englishlocation}[1]{%
+  \renewcommand{\njut@value@en@location}{#1}}
 \newcommand*{\englishdate}[1]{%
   \renewcommand{\njut@value@en@date}{#1}}
 \newcommand{\njut@underline}[2][\textwidth]%
@@ -878,24 +876,27 @@
   \thispagestyle{empty}
   \begin{center}
     \vspace*{20pt}
-    \bf\sffamily\zihao{2}\njut@value@en@title
+    {\bf\sffamily\zihao{-2}\njut@value@en@title}
     \vskip \stretch{1}
-    \normalfont\rmfamily\zihao{4}\njut@cap@cover@en@by
     \vskip 3pt
-    \bf\sffamily\zihao{4}\njut@value@en@author
+    \normalsize\rmfamily\zihao{4}\njut@cap@cover@en@statement
     \vskip\stretch{1}
-    \normalfont\rmfamily\zihao{4}\njut@cap@cover@en@supervisor
-    \vskip 3pt
-    \normalfont\sffamily\zihao{4}\njut@value@en@supervisor
-    \vskip\stretch{1}
-    \normalsize\rmfamily\njut@cap@cover@en@statement
-    \vskip\stretch{2}
-    \includegraphics[width=2.5cm]{\njut@cap@institute@logo} \\
+    \makebox[60pt]{
+      \bf\sffamily\zihao{-3}
+      {\njut@cap@cover@en@candidate\quad
+      \njut@value@en@author}
+      }
     \vskip 3mm
-    \normalfont\njut@value@en@department\\
-    \njut@value@en@institute
-    \vskip 30pt
-    \normalfont\normalsize\njut@value@en@date
+    \makebox[60pt]{
+      \bf\sffamily\zihao{-3}
+      {\njut@cap@cover@en@supervisor\quad
+      \njut@value@en@supervisor}
+      }
+    \vskip\stretch{1}
+    \vskip 3mm
+    \njut@value@en@institute\\
+    \njut@value@en@location
+    \vskip 50pt
   \end{center}
   \normalfont
   \cleardoublepage

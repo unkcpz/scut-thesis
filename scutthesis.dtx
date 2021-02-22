@@ -1742,7 +1742,7 @@
 %
 % 定义南京大学学位论文中文封面的字符串常量：
 %    \begin{macrocode}
-\newcommand*{\njut@cap@cover}{中文封面}
+\newcommand*{\njut@cap@cover}{封面}
 \newcommand*{\njut@cap@cover@thesis}{{\njut@value@degree}学位论文}
 \newcommand*{\njut@cap@cover@apply}{申请{\njut@value@degree}学位}
 \newcommand*{\njut@cap@cover@title}{论文题目}
@@ -1767,14 +1767,10 @@
 %    \begin{macrocode}
 \newcommand*{\njut@cap@cover@en@by}{by}
 \newcommand*{\njut@cap@cover@en@in}{in}
-\newcommand*{\njut@cap@cover@en@supervisor}{Supervised by}
+\newcommand*{\njut@cap@cover@en@candidate}{Candidate:}
+\newcommand*{\njut@cap@cover@en@supervisor}{Supervisor:}
 \newcommand*{\njut@cap@cover@en@statement}{%
-A dissertation submitted to\\
-the graduate school of {\njut@value@en@institute}\\
-in partial fulfilment of the requirements for the degree of\\
-{\textsc{\njut@value@en@degree}}\\
-in\\
-{\njut@value@en@major}
+A Dissertation Submitted for the Degree of {\textsc{\njut@value@en@degree}}
 }
 %    \end{macrocode}
 %
@@ -1937,7 +1933,8 @@ in\\
 \newcommand*{\njut@value@en@supervisor}{Professor (Supervisor's Name)}
 \newcommand*{\njut@value@en@major}{Author's Major}
 \newcommand*{\njut@value@en@department}{(Department's Name)}
-\newcommand*{\njut@value@en@institute}{Nanjing University}
+\newcommand*{\njut@value@en@institute}{South China University of Technology}
+\newcommand*{\njut@value@en@location}{Guangzhou, China}
 \newcommand*{\njut@value@en@date}{
 \ifcase\month\or
 January\or
@@ -3100,6 +3097,8 @@ December\fi
   \renewcommand{\njut@value@en@department}{#1}}
 \newcommand{\englishinstitute}[1]{%
   \renewcommand{\njut@value@en@institute}{#1}}
+\newcommand{\englishlocation}[1]{%
+  \renewcommand{\njut@value@en@location}{#1}}
 \newcommand*{\englishdate}[1]{%
   \renewcommand{\njut@value@en@date}{#1}}
 %    \end{macrocode}
@@ -3246,24 +3245,27 @@ December\fi
   \thispagestyle{empty}
   \begin{center}
     \vspace*{20pt}
-    \bf\sffamily\zihao{2}\njut@value@en@title
+    {\bf\sffamily\zihao{-2}\njut@value@en@title}
     \vskip \stretch{1}
-    \normalfont\rmfamily\zihao{4}\njut@cap@cover@en@by
     \vskip 3pt
-    \bf\sffamily\zihao{4}\njut@value@en@author
+    \normalsize\rmfamily\zihao{4}\njut@cap@cover@en@statement
     \vskip\stretch{1}
-    \normalfont\rmfamily\zihao{4}\njut@cap@cover@en@supervisor
-    \vskip 3pt
-    \normalfont\sffamily\zihao{4}\njut@value@en@supervisor
-    \vskip\stretch{1}
-    \normalsize\rmfamily\njut@cap@cover@en@statement
-    \vskip\stretch{2}
-    \includegraphics[width=2.5cm]{\njut@cap@institute@logo} \\
+    \makebox[60pt]{
+      \bf\sffamily\zihao{-3}
+      {\njut@cap@cover@en@candidate\quad
+      \njut@value@en@author}
+      }
     \vskip 3mm
-    \normalfont\njut@value@en@department\\
-    \njut@value@en@institute
-    \vskip 30pt
-    \normalfont\normalsize\njut@value@en@date
+    \makebox[60pt]{
+      \bf\sffamily\zihao{-3}
+      {\njut@cap@cover@en@supervisor\quad
+      \njut@value@en@supervisor}
+      }
+    \vskip\stretch{1}
+    \vskip 3mm
+    \njut@value@en@institute\\
+    \njut@value@en@location
+    \vskip 50pt
   \end{center}
   \normalfont
   \cleardoublepage
