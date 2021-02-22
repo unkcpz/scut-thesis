@@ -509,7 +509,11 @@
 \renewcommand{\footrulewidth}{0pt}
 \renewcommand{\headrulewidth}{1pt}
 \fancyhead{}  % override fancyhead to none.
+<<<<<<< HEAD
 \fancyhead[CE]{华南理工大学{\njut@value@degree}学位论文}
+=======
+\fancyhead[CE]{华南理工大学博士学位论文} % TODO: 分支适应其他学位
+>>>>>>> ced216c (更新中文封面为华工格式)
 \fancyhead[CO]{\leftmark}
 \pagestyle{fancy}
 \renewcommand{\chaptermark}[1]{\markboth{%
@@ -820,55 +824,39 @@
   \vskip\stretch{5}
   \cleardoublepage
 }
-\newcommand*{\njut@covertable@onelinetitle}{
+\newcommand*{\njut@covertable@titleinfo}{
   \begin{tabular}{p{7.3em}c}
-      \makebox[7em][s]{\njut@cap@cover@title}
-      & \njutunderline[310pt]{\njut@value@title}\\
       \makebox[7em][s]{\njut@cap@cover@author}
-      & \njutunderline[310pt]{\njut@value@author}\\
+      & \njutunderline[260pt]{\njut@value@author}\\
       \makebox[7em][s]{\njut@cap@cover@major}
-      & \njutunderline[310pt]{\njut@value@major}\\
-      \makebox[7em][s]{\njut@cap@cover@researchfield}
-      & \njutunderline[310pt]{\njut@value@researchfield}\\
+      & \njutunderline[260pt]{\njut@value@major}\\
       \makebox[7em][s]{\njut@cap@cover@supervisor}
-      & \njutunderline[310pt]{\njut@value@supervisor}\\
+      & \njutunderline[260pt]{\njut@value@supervisor}\\
+      \makebox[7em][s]{\njut@cap@cover@department}
+      & \njutunderline[260pt]{\njut@value@department}\\
+      \makebox[7em][s]{\njut@cap@cover@submitdate}
+      & \njutunderline[260pt]{\njut@value@submitdate}\\
   \end{tabular}
 }
-\newcommand*{\njut@covertable@twolinetitle}{
-  \begin{tabular}{p{7.3em}c}
-      \makebox[7em][s]{\njut@cap@cover@title}
-      & \njutunderline[310pt]{\njut@value@titlea}\\
-      \makebox[7em][s]{}
-      & \njutunderline[310pt]{\njut@value@titleb}\\
-      \makebox[7em][s]{\njut@cap@cover@author}
-      & \njutunderline[310pt]{\njut@value@author}\\
-      \makebox[7em][s]{\njut@cap@cover@major}
-      & \njutunderline[310pt]{\njut@value@major}\\
-      \makebox[7em][s]{\njut@cap@cover@researchfield}
-      & \njutunderline[310pt]{\njut@value@researchfield}\\
-      \makebox[7em][s]{\njut@cap@cover@supervisor}
-      & \njutunderline[310pt]{\njut@value@supervisor}\\
-  \end{tabular}
+\newcommand*{\njut@covertable@title}{
+    \njutunderline[420pt]{\njut@cap@cover@title}
+    \njutunderline[420pt]{\njut@value@titlea}
+    \njutunderline[420pt]{\njut@value@titleb}
 }
 \renewcommand*{\maketitle}{%
   \thispagestyle{empty}
   \pdfbookmark[0]{\njut@cap@cover}{cover}
   \begin{center}
     \vskip 10mm
-    \includegraphics[width=1.96cm]{\njut@cap@institute@logo} \\
+    \includegraphics[width=0.96\textwidth]{\njut@cap@institute@logo} \\
     \vskip 8mm
-    {\bf\kaishu\zihao{1}\makebox[10em][s]{\njut@cap@cover@thesis}}\\
-    \vskip 5mm
-    {\bf\kaishu\zihao{1}（\makebox[7em][s]{\njut@cap@cover@apply}）}\\
+    {\bf\heiti\zihao{0}\makebox[10em][c]{\njut@cap@cover@thesis}}\\
+    \vskip 3mm
     \vskip\stretch{1}
-    {\bgroup
-    \bf\kaishu\zihao{3}
-    \def\tabcolsep{1pt}
-    \def\arraystretch{1.5}
-    \ifdefempty{\njut@cap@cover@title}{\njut@covertable@onelinetitle}{\njut@covertable@twolinetitle}
-    \egroup}\\
-    \vskip \stretch{1}
-    {\bf\kaishu\zihao{4}\njut@value@date}
+    {\heiti\zihao{2}\njut@covertable@title}
+    \vskip\stretch{1}
+    {\heiti\zihao{3}\njut@covertable@titleinfo}\\
+    \vskip\stretch{1}
   \end{center}
   \ifnjut@backinfo
     \clearpage

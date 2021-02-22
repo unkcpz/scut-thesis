@@ -1743,14 +1743,15 @@
 % 定义南京大学学位论文中文封面的字符串常量：
 %    \begin{macrocode}
 \newcommand*{\njut@cap@cover}{中文封面}
-\newcommand*{\njut@cap@cover@thesis}{{\njut@value@type}毕业论文}
+\newcommand*{\njut@cap@cover@thesis}{{\njut@value@degree}学位论文}
 \newcommand*{\njut@cap@cover@apply}{申请{\njut@value@degree}学位}
 \newcommand*{\njut@cap@cover@title}{论文题目}
 \newcommand*{\njut@cap@cover@author}{作者姓名}
 \newcommand*{\njut@cap@cover@supervisor}{指导教师}
-\newcommand*{\njut@cap@cover@major}{学科、专业方向}
+\newcommand*{\njut@cap@cover@major}{学科专业}
 \newcommand*{\njut@cap@cover@researchfield}{研究方向}
-\newcommand*{\njut@cap@cover@department}{院系}
+\newcommand*{\njut@cap@cover@department}{所在学院}
+\newcommand*{\njut@cap@cover@submitdate}{论文提交日期}
 \newcommand*{\njut@cap@cover@institute}{华南理工大学}
 %    \end{macrocode}
 %
@@ -1895,9 +1896,9 @@ in\\
        \fi
     \fi
 \fi
-\newcommand*{\njut@value@title}{(论文标题)}
 \newcommand*{\njut@value@titlea}{(论文长标题第一行)}
 \newcommand*{\njut@value@titleb}{(论文长标题第二行)}
+\newcommand*{\njut@value@title}{\njut@value@titlea\njut@value@titleb}
 \newcommand*{\njut@value@author}{(作者姓名)}
 \newcommand*{\njut@value@telphone}{(作者电话号码)}
 \newcommand*{\njut@value@email}{(作者电子邮件)}
@@ -3183,55 +3184,40 @@ December\fi
 % 重新定义{\LaTeX}提供的\cs{maketitle}命令，使其生成南京大学学术论文所需的中文封面。
 % 注意我们使用了前面修改过的\cs{cleardoublepage}命令来插入无页眉页脚的空白页。
 %    \begin{macrocode}
-\newcommand*{\njut@covertable@onelinetitle}{
+% 设置title中的除提名的其他信息
+\newcommand*{\njut@covertable@titleinfo}{
   \begin{tabular}{p{7.3em}c}
-      \makebox[7em][s]{\njut@cap@cover@title}
-      & \njutunderline[310pt]{\njut@value@title}\\
       \makebox[7em][s]{\njut@cap@cover@author}
-      & \njutunderline[310pt]{\njut@value@author}\\
+      & \njutunderline[260pt]{\njut@value@author}\\
       \makebox[7em][s]{\njut@cap@cover@major}
-      & \njutunderline[310pt]{\njut@value@major}\\
-      \makebox[7em][s]{\njut@cap@cover@researchfield}
-      & \njutunderline[310pt]{\njut@value@researchfield}\\
+      & \njutunderline[260pt]{\njut@value@major}\\
       \makebox[7em][s]{\njut@cap@cover@supervisor}
-      & \njutunderline[310pt]{\njut@value@supervisor}\\
+      & \njutunderline[260pt]{\njut@value@supervisor}\\
+      \makebox[7em][s]{\njut@cap@cover@department}
+      & \njutunderline[260pt]{\njut@value@department}\\
+      \makebox[7em][s]{\njut@cap@cover@submitdate}
+      & \njutunderline[260pt]{\njut@value@submitdate}\\
   \end{tabular}
 }
-\newcommand*{\njut@covertable@twolinetitle}{
-  \begin{tabular}{p{7.3em}c}
-      \makebox[7em][s]{\njut@cap@cover@title}
-      & \njutunderline[310pt]{\njut@value@titlea}\\
-      \makebox[7em][s]{}
-      & \njutunderline[310pt]{\njut@value@titleb}\\
-      \makebox[7em][s]{\njut@cap@cover@author}
-      & \njutunderline[310pt]{\njut@value@author}\\
-      \makebox[7em][s]{\njut@cap@cover@major}
-      & \njutunderline[310pt]{\njut@value@major}\\
-      \makebox[7em][s]{\njut@cap@cover@researchfield}
-      & \njutunderline[310pt]{\njut@value@researchfield}\\
-      \makebox[7em][s]{\njut@cap@cover@supervisor}
-      & \njutunderline[310pt]{\njut@value@supervisor}\\
-  \end{tabular}
+\newcommand*{\njut@covertable@title}{
+    \njutunderline[420pt]{\njut@cap@cover@title}
+    \njutunderline[420pt]{\njut@value@titlea}
+    \njutunderline[420pt]{\njut@value@titleb}
 }
 \renewcommand*{\maketitle}{%
   \thispagestyle{empty}
   \pdfbookmark[0]{\njut@cap@cover}{cover}
   \begin{center}
     \vskip 10mm
-    \includegraphics[width=1.96cm]{\njut@cap@institute@logo} \\
+    \includegraphics[width=0.96\textwidth]{\njut@cap@institute@logo} \\
     \vskip 8mm
-    {\bf\kaishu\zihao{1}\makebox[10em][s]{\njut@cap@cover@thesis}}\\
-    \vskip 5mm
-    {\bf\kaishu\zihao{1}（\makebox[7em][s]{\njut@cap@cover@apply}）}\\
+    {\bf\heiti\zihao{0}\makebox[10em][c]{\njut@cap@cover@thesis}}\\
+    \vskip 3mm
     \vskip\stretch{1}
-    {\bgroup
-    \bf\kaishu\zihao{3}
-    \def\tabcolsep{1pt}
-    \def\arraystretch{1.5}
-    \ifdefempty{\njut@cap@cover@title}{\njut@covertable@onelinetitle}{\njut@covertable@twolinetitle}
-    \egroup}\\
-    \vskip \stretch{1}
-    {\bf\kaishu\zihao{4}\njut@value@date}
+    {\heiti\zihao{2}\njut@covertable@title}
+    \vskip\stretch{1}
+    {\heiti\zihao{3}\njut@covertable@titleinfo}\\
+    \vskip\stretch{1}
   \end{center}
   \ifnjut@backinfo
     \clearpage
