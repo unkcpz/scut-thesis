@@ -2692,29 +2692,25 @@ December\fi
 %    \item 无论奇偶页，页脚都为空，页脚上都无分割线。
 % \end{itemize}
 %
-% 设置|fancy|风格下的页脚，令页脚为空；令页脚分割线宽度为$0$：
+% 设置|fancy|风格下的页脚，令页脚当前页码，居中；令页脚分割线宽度为$0$：
 %    \begin{macrocode}
-\fancyfoot{}
+\fancyfoot[C]{\thepage}
 \renewcommand{\footrulewidth}{0pt}
 %    \end{macrocode}
 %
-% 设置|fancy|风格下的页眉，令偶数页左上角和奇数页右上角显示当前页码，令页眉的分
+% 设置|fancy|风格下的页眉，令页眉的分
 % 割线宽度为$1$：
 %    \begin{macrocode}
-\fancyhead[LE,RO]{\thepage}
 \renewcommand{\headrulewidth}{1pt}
 %    \end{macrocode}
 %
-% 设置|fancy|风格的页眉，令偶数页右上角和奇数页左上角分别显示当前章信息和当前节
+% 设置|fancy|风格的页眉，令偶数页和奇数页分别显示固定字符和当前章
 % 信息；但若当前页面尚未开始本章的第一节（即\cs{rightmark}为空），则奇数页左上角也
 % 显示当前章信息（即\cs{leftmark}）。
 %    \begin{macrocode}
-\fancyhead[RE]{\leftmark}
-\fancyhead[LO]{%
- \ifthenelse{\equal{\rightmark}{}}% if \rightmark is empty
-            {\leftmark}%
-            {\rightmark}%
-}
+\fancyhead{}  % override fancyhead to none.
+\fancyhead[CE]{华南理工大学{\njut@value@degree}学位论文}
+\fancyhead[CO]{\leftmark}
 %    \end{macrocode}
 %
 % 设置全局使用|fancy|风格。

@@ -6,21 +6,21 @@
 %%
 %% scutthesis.dtx  (with options: `cls')
 %% This is a generated file.
-%% 
+%%
 %% Copyright (C) 2013-2017, Haixing Hu.
 %% Department of Computer Science and Technology, Nanjing University.
-%% 
+%%
 %% Home Page of the Project: http://haixing-hu.github.io/nju-thesis/
-%% 
+%%
 %% It may be distributed and/or modified under the conditions of the LaTeX Project
 %% Public License, either version 1.2 of this license or (at your option) any
 %% later version.  The latest version of this license is in
-%% 
+%%
 %%    http://www.latex-project.org/lppl.txt
-%% 
+%%
 %% and version 1.2 or later is part of all distributions of LaTeX version
 %% 1999/12/01 or later.
-%% 
+%%
 %% To produce the documentation run the original source files ending with `.dtx'
 %% through LaTeX.
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
@@ -505,16 +505,12 @@
    \renewcommand{\headrulewidth}{0pt} % and the header line
    \renewcommand{\footrulewidth}{0pt} % and the footer line
 }
-\fancyfoot{}
+\fancyfoot[C]{\thepage}
 \renewcommand{\footrulewidth}{0pt}
-\fancyhead[LE,RO]{\thepage}
 \renewcommand{\headrulewidth}{1pt}
-\fancyhead[RE]{\leftmark}
-\fancyhead[LO]{%
- \ifthenelse{\equal{\rightmark}{}}% if \rightmark is empty
-            {\leftmark}%
-            {\rightmark}%
-}
+\fancyhead{}  % override fancyhead to none.
+\fancyhead[CE]{华南理工大学{\njut@value@degree}学位论文}
+\fancyhead[CO]{\leftmark}
 \pagestyle{fancy}
 \renewcommand{\chaptermark}[1]{\markboth{%
  \bfseries\if@mainmatter\chaptertitlename\hspace{1em}\fi{#1}%
