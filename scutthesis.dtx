@@ -1698,25 +1698,37 @@
 %
 % 定义国家图书馆（NLC）封面的字符串常量：
 %    \begin{macrocode}
-\newcommand*{\njut@cap@nlc}{国家图书馆封面}
-\newcommand*{\njut@cap@nlc@classification}{分类号}
-\newcommand*{\njut@cap@nlc@securitylevel}{密级}
-\newcommand*{\njut@cap@nlc@udc}{UDC}
-\newcommand*{\njut@cap@nlc@title}{%
-学\hspace{1em}位\hspace{1em}论\hspace{1em}文%
-}
-\newcommand*{\njut@cap@nlc@quotetitle}{（题名和副题名）}
-\newcommand*{\njut@cap@nlc@author}{（作者姓名）}
+\newcommand*{\njut@cap@nlc}{国家图书馆封面-提名页}
+\newcommand*{\njut@cap@nlc@classification}{分类号：}
+\newcommand*{\njut@cap@nlc@schoolid}{学校代号：}
+\newcommand*{\njut@cap@nlc@studentnum}{学号：}
+\ifnjut@phd
+    \newcommand*{\njut@cap@nlc@title}{华南理工大学博士学位论文}
+\else
+    \ifnjut@master
+        \newcommand*{\njut@cap@nlc@title}{华南理工大学硕士学位论文}
+    \else
+       \ifnjut@bachelor
+          \newcommand*{\njut@cap@nlc@title}{华南理工大学学士学位论文}
+       \else
+          \ClassError{scutthesis}{No degree was selected.}{}
+       \fi
+    \fi
+\fi
+\newcommand*{\njut@cap@nlc@author}{作者姓名：}
 \newcommand*{\njut@cap@nlc@supervisor}{%
-指导教师姓名、职务、职称、学位、单位名称及地址%
+指导教师姓名、职称：%
 }
-\newcommand*{\njut@cap@nlc@degree}{申请学位级别}
-\newcommand*{\njut@cap@nlc@major}{专业名称}
-\newcommand*{\njut@cap@nlc@submitdate}{论文提交日期}
-\newcommand*{\njut@cap@nlc@defenddate}{论文答辩日期}
-\newcommand*{\njut@cap@nlc@institute}{学位授予单位和日期}
-\newcommand*{\njut@cap@nlc@chairman}{答辩委员会主席：}
-\newcommand*{\njut@cap@nlc@reviwer}{评阅人：}
+\newcommand*{\njut@cap@nlc@degree}{申请学位级别：}
+\newcommand*{\njut@cap@nlc@major}{学科专业名称：}
+\newcommand*{\njut@cap@nlc@researchfield}{研究方向：}
+\newcommand*{\njut@cap@nlc@submitdate}{论文提交日期：}
+\newcommand*{\njut@cap@nlc@defenddate}{论文答辩日期：}
+\newcommand*{\njut@cap@nlc@institute}{学位授予单位：}
+\newcommand*{\njut@cap@nlc@awarddate}{学位授予日期：}
+\newcommand*{\njut@cap@nlc@member}{答辩委员会成员：}
+\newcommand*{\njut@cap@nlc@chairman}{主席：}
+\newcommand*{\njut@cap@nlc@reviwer}{委员：}
 %    \end{macrocode}
 %
 % 定义标准的文献密级汉字代码：
@@ -1739,7 +1751,7 @@
 \newcommand*{\njut@cap@cover@major}{学科、专业方向}
 \newcommand*{\njut@cap@cover@researchfield}{研究方向}
 \newcommand*{\njut@cap@cover@department}{院系}
-\newcommand*{\njut@cap@cover@institute}{南京大学}
+\newcommand*{\njut@cap@cover@institute}{华南理工大学}
 %    \end{macrocode}
 %
 % 定义南京大学学位论文中文封面背面的字符串常量：
@@ -1848,7 +1860,9 @@ in\\
 % 定义国家图书馆（NLC）封面中要填写的字段的默认值：
 %    \begin{macrocode}
 \newcommand*{\njut@value@nlc@classification}{(分类)}
-\newcommand*{\njut@value@nlc@securitylevel}{\openlevel}
+\newcommand*{\njut@value@nlc@schoolid}{10561}
+\newcommand*{\njut@value@nlc@studentnum}{XXXXXXXXXXXX}
+\newcommand*{\njut@value@nlc@securitylevel}{\confidentiallevel$\bigstar$ 五年}
 \newcommand*{\njut@value@nlc@udc}{}
 \newcommand*{\njut@value@nlc@titlea}{\njut@value@title}
 \newcommand*{\njut@value@nlc@titleb}{}
@@ -1887,15 +1901,15 @@ in\\
 \newcommand*{\njut@value@author}{(作者姓名)}
 \newcommand*{\njut@value@telphone}{(作者电话号码)}
 \newcommand*{\njut@value@email}{(作者电子邮件)}
-\newcommand*{\njut@value@studentnum}{XXXXXXXX}
 \newcommand*{\njut@value@grade}{XXXX}
 \newcommand*{\njut@value@supervisor}{(导师姓名和职称)}
 \newcommand*{\njut@value@supervisortelphone}{(导师电话号码)}
 \newcommand*{\njut@value@major}{(作者专业)}
 \newcommand*{\njut@value@researchfield}{(作者研究方向)}
 \newcommand*{\njut@value@department}{(作者所属院系)}
-\newcommand*{\njut@value@institute}{南京大学}
+\newcommand*{\njut@value@institute}{华南理工大学}
 \newcommand*{\njut@value@submitdate}{xxxx年xx月xx日}
+\newcommand*{\njut@value@awarddate}{xxxx年xx月xx日}
 \newcommand*{\njut@value@defenddate}{xxxx年xx月xx日}
 \newcommand*{\njut@value@date}{%
 {\number\year}年{\number\month}月{\number\day}日%
@@ -3001,8 +3015,13 @@ December\fi
 %    \begin{macrocode}
 \newcommand*{\classification}[1]{%
   \renewcommand*{\njut@value@nlc@classification}{#1}}
+\newcommand*{\schoolid}[1]{%
+  \renewcommand*{\njut@value@nlc@schoolid}{#1}}
+\newcommand*{\studentnum}[1]{%
+  \renewcommand*{\njut@value@nlc@studentnum}{#1}}
 \newcommand*{\securitylevel}[1]{%
   \renewcommand*{\njut@value@nlc@securitylevel}{#1}}
+\newcommand*{\emptylevel}{\njut@cap@nlc@emptylevel}
 \newcommand*{\openlevel}{\njut@cap@nlc@openlevel}
 \newcommand*{\controllevel}{\njut@cap@nlc@controllevel}
 \newcommand*{\confidentiallevel}{\njut@cap@nlc@confidentiallevel}
@@ -3046,8 +3065,6 @@ December\fi
   \renewcommand{\njut@value@telphone}{#1}}
 \newcommand*{\email}[1]{%
   \renewcommand{\njut@value@email}{#1}}
-\newcommand*{\studentnum}[1]{%
-  \renewcommand{\njut@value@studentnum}{#1}}
 \newcommand*{\grade}[1]{%
   \renewcommand{\njut@value@grade}{#1}}
 \newcommand*{\supervisor}[1]{%
@@ -3064,6 +3081,8 @@ December\fi
   \renewcommand{\njut@value@institute}{#1}}
 \newcommand*{\submitdate}[1]{%
   \renewcommand{\njut@value@submitdate}{#1}}
+\newcommand*{\awarddate}[1]{%
+  \renewcommand{\njut@value@awarddate}{#1}}
 \newcommand*{\defenddate}[1]{%
   \renewcommand{\njut@value@defenddate}{#1}}
 \renewcommand*{\date}[1]{%
@@ -3104,58 +3123,61 @@ December\fi
 % 无页眉页脚的空白页。
 %    \begin{macrocode}
 \newcommand*{\makenlctitle}{%
-  \thispagestyle{empty}
+  \thispagestyle{empty} % Both header and footer are empty.
   \pdfbookmark[0]{\njut@cap@nlc}{nlc}
-  {\songti\zihao{-4}
-    \makebox[40pt][l]{\njut@cap@nlc@classification}
-    \njutunderline[150pt]{\njut@value@nlc@classification}
+  {\heiti\zihao{4}
+    \noindent\makebox[40pt][l]{\njut@cap@nlc@classification}
+    \makebox[100pt]{\njut@value@nlc@classification}
     \hfill
-    \makebox[40pt][r]{\njut@cap@nlc@securitylevel}
-    \njutunderline[150pt]{\njut@value@nlc@securitylevel}
+    \makebox[40pt][l]{\njut@cap@nlc@schoolid}
+    \makebox[100pt]{\njut@value@nlc@schoolid}
     \vskip 10pt
-    \makebox[40pt][l]{\njut@cap@nlc@udc}
-    \njutunderline[150pt]{\njut@value@nlc@udc}
+    \noindent\makebox[40pt][l]{\njut@cap@nlc@studentnum}
+    \makebox[100pt]{\njut@value@nlc@studentnum}
+    \hfill
+    \makebox[100pt]{\njut@value@nlc@securitylevel}
   }
   \vskip\stretch{2}
   \begin{center}
     \def\ULthickness{1pt}
-    {\kaishu\zihao{-0} \njut@cap@nlc@title}
-    {\kaishu\zihao{1}
+    {\heiti\zihao{-2} \njut@cap@nlc@title}
+    {\heiti\zihao{-1}
     \vskip \stretch{1}
-    \njutunderline[12em]{\njut@value@nlc@titlea}\\
-    \njutunderline[12em]{\njut@value@nlc@titleb}\\
-    \njutunderline[12em]{\njut@value@nlc@titlec}\\
+    \makebox[12em]{\njut@value@nlc@titlea}\\
+    \makebox[12em]{\njut@value@nlc@titleb}\\
+    \makebox[12em]{\njut@value@nlc@titlec}\\
     }
-    \vskip \stretch{1}
-    {\kaishu\zihao{4}\njut@cap@nlc@quotetitle}
-    \vskip \stretch{1}
-    {\kaishu\zihao{1}\njutunderline{\njut@value@author}}
-    \vskip \stretch{1}
-    {\kaishu\zihao{4}\njut@cap@nlc@author}
   \end{center}
   \vskip\stretch{1}
-  {\kaishu\zihao{4}
-    \noindent\njut@cap@nlc@supervisor%
-    \njutunderline[94pt]{\njut@value@supervisor}\par
-    \noindent\njutunderline[\textwidth]{%
-      \njut@value@nlc@supervisorinfo}\par
-    \noindent\njut@cap@nlc@degree%
-    \njutunderline[8em]{\njut@value@degree}%
-    \noindent\njut@cap@nlc@major%
-    \njutunderline[164pt]{\njut@value@major}\par
+  {\songti\zihao{5}
+    \noindent\makebox[8em][l]{\njut@cap@nlc@author}%
+    \makebox[4em][l]{\njut@value@author}%
+    \makebox[12em][l]\njut@cap@nlc@supervisor%
+    \makebox[8em]{\njut@value@supervisor}\par
+    \noindent\makebox[8em][l]{\njut@cap@nlc@degree}%
+    \makebox[4em][l]{\njut@value@degree}%
+    \makebox[8em][l]{\njut@cap@nlc@major}%
+    \makebox[16em]{\njut@value@major}\par
+    \noindent\njut@cap@nlc@researchfield%
+    \makebox[16em]{\njut@value@researchfield}\par
     \noindent\njut@cap@nlc@submitdate%
-    \njutunderline[8em]{\njut@value@submitdate}%
+    \makebox[12em]{\njut@value@submitdate}%
     \njut@cap@nlc@defenddate%
-    \njutunderline[134pt]{\njut@value@defenddate}\par
-    \noindent\njut@cap@nlc@institute\njutunderline[290pt]{}\par
-    \noindent\hfill\njut@cap@nlc@chairman%
-    \njutunderline[9em]{\njut@value@nlc@chairman}\par
-    \noindent\hfill\njut@cap@nlc@reviwer%
+    \makebox[12em]{\njut@value@defenddate}\par
+    \noindent\njut@cap@nlc@institute%
+    \makebox[12em]{\njut@value@institute}%
+    \njut@cap@nlc@awarddate%
+    \makebox[12em]{\njut@value@awarddate}\par
+    \noindent\njut@cap@nlc@member\par
+    \noindent\makebox[4em][l]{\noindent\njut@cap@nlc@chairman}%
+    \njutunderline[8em]{\njut@value@nlc@chairman}\par
+    \noindent\makebox[4em][l]{\njut@cap@nlc@reviwer}%
     \njutunderline[9em]{\njut@value@nlc@reviewera}\par
-    \noindent\hfill\njutunderline[9em]{\njut@value@nlc@reviewerb}\par
-    \noindent\hfill\njutunderline[9em]{\njut@value@nlc@reviewerc}\par
-    \noindent\hfill\njutunderline[9em]{\njut@value@nlc@reviewerd}\par
+    \noindent\makebox[4em]{}\njutunderline[9em]{\njut@value@nlc@reviewerb}\par
+    \noindent\makebox[4em]{}\njutunderline[9em]{\njut@value@nlc@reviewerc}\par
+    \noindent\makebox[4em]{}\njutunderline[9em]{\njut@value@nlc@reviewerd}\par
   }
+  \vskip\stretch{5}
   \cleardoublepage
 }
 %    \end{macrocode}
@@ -3222,7 +3244,7 @@ December\fi
     {\bf\kaishu\zihao{-3}
     \noindent
     \begin{tabular}{p{6.2em}l}
-    \makebox[6em][s]{\njut@cap@coverback@studentnum}： &\njut@value@studentnum\\
+    \makebox[6em][s]{\njut@cap@coverback@studentnum}： &\njut@value@nlc@studentnum\\
     \makebox[6em][s]{\njut@cap@coverback@defenddate}： &\njut@value@defenddate\\
     \makebox[6em][s]{\njut@cap@coverback@supervisor}： &\njut@cap@coverback@sign\\
     \end{tabular}}
@@ -3514,7 +3536,7 @@ December\fi
   & \multicolumn{6}{c|}{\njut@value@title} \\
   \hline
   \cell{2.2cm}{1cm}{\njut@cap@license@studentnum}
-  & {\njut@value@studentnum}
+  & {\njut@value@nlc@studentnum}
   & {\njut@cap@license@department}
   & \multicolumn{2}{c|}{%
     \cell{3.52cm}{1cm}{\njut@value@department}%

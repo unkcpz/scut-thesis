@@ -19,6 +19,10 @@
 
 % 设置论文按照《中国图书资料分类法》的分类编号
 \classification{0175.2}
+% 学校代号，华工代号为10561
+\schoolid{10561}
+% 学号
+\studentnum{201700000000}
 % 论文的密级。需按照GB/T 7156-2003标准进行设置。预定义的值包括：
 % - \openlevel，表示公开级：此级别的文献可在国内外发行和交换。
 % - \controllevel，表示限制级：此级别的文献内容不涉及国家秘密，但在一定时间内
@@ -26,17 +30,19 @@
 % - \confidentiallevel，表示秘密级：此级别的文献内容涉及一般国家秘密。
 % - \clasifiedlevel，表示机密级：此级别的文献内容涉及重要的国家秘密 。
 % - \mostconfidentiallevel，表示绝密级：此级别的文献内容涉及最重要的国家秘密。
-% 此属性可选，默认为\openlevel，即公开级。
-\securitylevel{\controllevel}
+% 此属性可选，默认为\emptylevel，即公开级不填入。
+\securitylevel{} % 非保密论文此处值为空，否则格式为密级加年限
+% 如下
+% \securitylevel{\confidentiallevel \bigstar 5年}
 % 设置论文按照《国际十进分类法UDC》的分类编号
 % 该编号可在下述网址查询：http://www.udcc.org/udcsummary/php/index.php?lang=chi
-\udc{004.72}
+% \udc{004.72}
 % 国家图书馆封面上的论文标题第一行，不可换行。此属性可选，默认值为通过\title设置的标题。
-\nlctitlea{数据中心}
+\nlctitlea{（第一行提名）}
 % 国家图书馆封面上的论文标题第二行，不可换行。此属性可选，默认值为空白。
-\nlctitleb{网络模型研究}
+\nlctitleb{（第二行提名或副提名）}
 % 国家图书馆封面上的论文标题第三行，不可换行。此属性可选，默认值为空白。
-\nlctitlec{}
+\nlctitlec{（第三行提名或副提名）}
 % 导师的单位名称及地址
 \supervisorinfo{南京大学计算机科学与技术系~~南京市汉口路22号~~210093}
 % 答辩委员会主席
@@ -66,7 +72,7 @@
 % 论文作者电子邮件地址
 \email{xiaobao.wei@gmail.com}
 % 论文作者学生证号
-\studentnum{MG0033011}
+% \studentnum{MG0033011}
 % 论文作者入学年份（年级）
 \grade{2010}
 % 导师姓名职称
@@ -80,11 +86,13 @@
 % 论文作者所在院系的中文名称
 \department{计算机科学与技术系}
 % 论文作者所在学校或机构的名称。此属性可选，默认值为``南京大学''。
-\institute{南京大学}
+\institute{华南理工大学}
 % 论文的提交日期，需设置年、月、日。
 \submitdate{2013年5月10日}
 % 论文的答辩日期，需设置年、月、日。
 \defenddate{2013年6月1日}
+% 学位授予日期，需设置年、月、日。
+\awarddate{2013年6月1日}
 % 论文的定稿日期，需设置年、月、日。此属性可选，默认值为最后一次编译时的日期，精确到日。
 %% \date{2013年5月1日}
 

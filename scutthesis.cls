@@ -681,8 +681,13 @@
 \setfnsymbol{circlednumber}
 \newcommand*{\classification}[1]{%
   \renewcommand*{\njut@value@nlc@classification}{#1}}
+\newcommand*{\schoolid}[1]{%
+  \renewcommand*{\njut@value@nlc@schoolid}{#1}}
+\newcommand*{\studentnum}[1]{%
+  \renewcommand*{\njut@value@nlc@studentnum}{#1}}
 \newcommand*{\securitylevel}[1]{%
   \renewcommand*{\njut@value@nlc@securitylevel}{#1}}
+\newcommand*{\emptylevel}{\njut@cap@nlc@emptylevel}
 \newcommand*{\openlevel}{\njut@cap@nlc@openlevel}
 \newcommand*{\controllevel}{\njut@cap@nlc@controllevel}
 \newcommand*{\confidentiallevel}{\njut@cap@nlc@confidentiallevel}
@@ -722,8 +727,6 @@
   \renewcommand{\njut@value@telphone}{#1}}
 \newcommand*{\email}[1]{%
   \renewcommand{\njut@value@email}{#1}}
-\newcommand*{\studentnum}[1]{%
-  \renewcommand{\njut@value@studentnum}{#1}}
 \newcommand*{\grade}[1]{%
   \renewcommand{\njut@value@grade}{#1}}
 \newcommand*{\supervisor}[1]{%
@@ -740,6 +743,8 @@
   \renewcommand{\njut@value@institute}{#1}}
 \newcommand*{\submitdate}[1]{%
   \renewcommand{\njut@value@submitdate}{#1}}
+\newcommand*{\awarddate}[1]{%
+  \renewcommand{\njut@value@awarddate}{#1}}
 \newcommand*{\defenddate}[1]{%
   \renewcommand{\njut@value@defenddate}{#1}}
 \renewcommand*{\date}[1]{%
@@ -762,58 +767,61 @@
            {\CJKunderline{\makebox[#1]{#2}}}
 \def\njutunderline{\@ifnextchar[\njut@underline\CJKunderline}
 \newcommand*{\makenlctitle}{%
-  \thispagestyle{empty}
+  \thispagestyle{empty} % Both header and footer are empty.
   \pdfbookmark[0]{\njut@cap@nlc}{nlc}
-  {\songti\zihao{-4}
-    \makebox[40pt][l]{\njut@cap@nlc@classification}
-    \njutunderline[150pt]{\njut@value@nlc@classification}
+  {\heiti\zihao{4}
+    \noindent\makebox[40pt][l]{\njut@cap@nlc@classification}
+    \makebox[100pt]{\njut@value@nlc@classification}
     \hfill
-    \makebox[40pt][r]{\njut@cap@nlc@securitylevel}
-    \njutunderline[150pt]{\njut@value@nlc@securitylevel}
+    \makebox[40pt][l]{\njut@cap@nlc@schoolid}
+    \makebox[100pt]{\njut@value@nlc@schoolid}
     \vskip 10pt
-    \makebox[40pt][l]{\njut@cap@nlc@udc}
-    \njutunderline[150pt]{\njut@value@nlc@udc}
+    \noindent\makebox[40pt][l]{\njut@cap@nlc@studentnum}
+    \makebox[100pt]{\njut@value@nlc@studentnum}
+    \hfill
+    \makebox[100pt]{\njut@value@nlc@securitylevel}
   }
   \vskip\stretch{2}
   \begin{center}
     \def\ULthickness{1pt}
-    {\kaishu\zihao{-0} \njut@cap@nlc@title}
-    {\kaishu\zihao{1}
+    {\heiti\zihao{-2} \njut@cap@nlc@title}
+    {\heiti\zihao{-1}
     \vskip \stretch{1}
-    \njutunderline[12em]{\njut@value@nlc@titlea}\\
-    \njutunderline[12em]{\njut@value@nlc@titleb}\\
-    \njutunderline[12em]{\njut@value@nlc@titlec}\\
+    \makebox[12em]{\njut@value@nlc@titlea}\\
+    \makebox[12em]{\njut@value@nlc@titleb}\\
+    \makebox[12em]{\njut@value@nlc@titlec}\\
     }
-    \vskip \stretch{1}
-    {\kaishu\zihao{4}\njut@cap@nlc@quotetitle}
-    \vskip \stretch{1}
-    {\kaishu\zihao{1}\njutunderline{\njut@value@author}}
-    \vskip \stretch{1}
-    {\kaishu\zihao{4}\njut@cap@nlc@author}
   \end{center}
   \vskip\stretch{1}
-  {\kaishu\zihao{4}
-    \noindent\njut@cap@nlc@supervisor%
-    \njutunderline[94pt]{\njut@value@supervisor}\par
-    \noindent\njutunderline[\textwidth]{%
-      \njut@value@nlc@supervisorinfo}\par
-    \noindent\njut@cap@nlc@degree%
-    \njutunderline[8em]{\njut@value@degree}%
-    \noindent\njut@cap@nlc@major%
-    \njutunderline[164pt]{\njut@value@major}\par
+  {\songti\zihao{5}
+    \noindent\makebox[8em][l]{\njut@cap@nlc@author}%
+    \makebox[4em][l]{\njut@value@author}%
+    \makebox[12em][l]\njut@cap@nlc@supervisor%
+    \makebox[8em]{\njut@value@supervisor}\par
+    \noindent\makebox[8em][l]{\njut@cap@nlc@degree}%
+    \makebox[4em][l]{\njut@value@degree}%
+    \makebox[8em][l]{\njut@cap@nlc@major}%
+    \makebox[16em]{\njut@value@major}\par
+    \noindent\njut@cap@nlc@researchfield%
+    \makebox[16em]{\njut@value@researchfield}\par
     \noindent\njut@cap@nlc@submitdate%
-    \njutunderline[8em]{\njut@value@submitdate}%
+    \makebox[12em]{\njut@value@submitdate}%
     \njut@cap@nlc@defenddate%
-    \njutunderline[134pt]{\njut@value@defenddate}\par
-    \noindent\njut@cap@nlc@institute\njutunderline[290pt]{}\par
-    \noindent\hfill\njut@cap@nlc@chairman%
-    \njutunderline[9em]{\njut@value@nlc@chairman}\par
-    \noindent\hfill\njut@cap@nlc@reviwer%
+    \makebox[12em]{\njut@value@defenddate}\par
+    \noindent\njut@cap@nlc@institute%
+    \makebox[12em]{\njut@value@institute}%
+    \njut@cap@nlc@awarddate%
+    \makebox[12em]{\njut@value@awarddate}\par
+    \noindent\njut@cap@nlc@member\par
+    \noindent\makebox[4em][l]{\noindent\njut@cap@nlc@chairman}%
+    \njutunderline[8em]{\njut@value@nlc@chairman}\par
+    \noindent\makebox[4em][l]{\njut@cap@nlc@reviwer}%
     \njutunderline[9em]{\njut@value@nlc@reviewera}\par
-    \noindent\hfill\njutunderline[9em]{\njut@value@nlc@reviewerb}\par
-    \noindent\hfill\njutunderline[9em]{\njut@value@nlc@reviewerc}\par
-    \noindent\hfill\njutunderline[9em]{\njut@value@nlc@reviewerd}\par
+    \noindent\makebox[4em]{}\njutunderline[9em]{\njut@value@nlc@reviewerb}\par
+    \noindent\makebox[4em]{}\njutunderline[9em]{\njut@value@nlc@reviewerc}\par
+    \noindent\makebox[4em]{}\njutunderline[9em]{\njut@value@nlc@reviewerd}\par
   }
+  \vskip\stretch{5}
   \cleardoublepage
 }
 \newcommand*{\njut@covertable@onelinetitle}{
@@ -873,7 +881,7 @@
     {\bf\kaishu\zihao{-3}
     \noindent
     \begin{tabular}{p{6.2em}l}
-    \makebox[6em][s]{\njut@cap@coverback@studentnum}： &\njut@value@studentnum\\
+    \makebox[6em][s]{\njut@cap@coverback@studentnum}： &\njut@value@nlc@studentnum\\
     \makebox[6em][s]{\njut@cap@coverback@defenddate}： &\njut@value@defenddate\\
     \makebox[6em][s]{\njut@cap@coverback@supervisor}： &\njut@cap@coverback@sign\\
     \end{tabular}}
@@ -1036,7 +1044,7 @@
   & \multicolumn{6}{c|}{\njut@value@title} \\
   \hline
   \cell{2.2cm}{1cm}{\njut@cap@license@studentnum}
-  & {\njut@value@studentnum}
+  & {\njut@value@nlc@studentnum}
   & {\njut@cap@license@department}
   & \multicolumn{2}{c|}{%
     \cell{3.52cm}{1cm}{\njut@value@department}%
