@@ -1733,7 +1733,7 @@
 %
 % 定义标准的文献密级汉字代码：
 %    \begin{macrocode}
-\newcommand*{\njut@cap@nlc@openlevel}{公开}
+\newcommand*{\njut@cap@nlc@openlevel}{}
 \newcommand*{\njut@cap@nlc@controllevel}{限制}
 \newcommand*{\njut@cap@nlc@confidentiallevel}{秘密}
 \newcommand*{\njut@cap@nlc@clasifiedlevel}{机密}
@@ -1815,26 +1815,39 @@ A Dissertation Submitted for the Degree of {\textsc{\njut@value@en@degree}}
 %
 % 定义《学位论文出版授权书》中的字符串常量：
 %    \begin{macrocode}
-\newcommand*{\njut@cap@license@chaptername}{学位论文出版授权书}
+\newcommand*{\njut@cap@license@origin}{学位论文原创性声明}
+\newcommand*{\njut@cap@license@origindeclaration}{%
+本人郑重声明：所呈交的论文是本人在导师的指导下独立进行研究所取得的研究成果。%
+除了文中特别加以标注引用的内容外，本论文不包含任何其他个人或集体已经发表或撰%
+写的成果作品。对本文的研究做出重要贡献的个人和集体，均已在文中以明确方式标明%
+。本人完全意识到本声明的法律后果由本人承担
+}
+\newcommand*{\njut@cap@license@licensetitle}{学位论文版权使用授权书}
 \newcommand*{\njut@cap@license@declaration}{%
-本人完全同意《中国优秀博硕士学位论文全文数据库出版章程》（以下简称“章程”），%
-愿意将本人的学位论文提交“中国学术期刊（光盘版）电子杂志社”在《中国博士学位论%
-文全文数据库》、《中国优秀硕士学位论文全文数据库》中全文发表。《中国博士学位论%
-文全文数据库》、《中国优秀硕士学位论文全文数据库》可以以电子、网络及其他数字媒%
-体形式公开出版，并同意编入《中国知识资源总库》，在《中国博硕士学位论文评价数据%
-库》中使用和在互联网上传播，同意按“章程”规定享受相关权益。%
+本学位论文作者完全了解学校有关保留、使用学位论文的规定，即：研究生在校攻读学位期间%
+论文工作的知识产权单位属华南理工大学。学校有权保存并向国家有关部门或机构送交论文的%
+复印件和电子版，允许学位论文被查阅（除在保密期内的保密论文外）；学校可以公布学位论%
+文的全部或部分内容，可以允许采用影印、缩印或其它复制手段保存、汇编学位论文。本人电%
+子文档的内容和纸质论文的内容相一致。
 }
 \newcommand*{\njut@cap@license@sign}{作者签名：}
-\newcommand*{\njut@cap@license@securitylevel}{论文涉密情况：}
-\newcommand*{\njut@cap@license@public}{不保密}
-\newcommand*{\njut@cap@license@secret}{保密，保密期：}
+\newcommand*{\njut@cap@license@supervisorsign}{指导教师签名：}
+\newcommand*{\njut@cap@license@date}{日期：}
+\newcommand*{\njut@cap@license@securitylevel}{本学位论文属于：}
+\newcommand*{\njut@cap@license@public}{不保密,同意在校园网上发布，%
+供校内师生和与学校有共享协议的单位浏览；同意将本人学位论文编入有关数据库进%
+行检索，传播学位论文的全部或部分内容。}
+\newcommand*{\njut@cap@license@secret}{保密%
+（校保密委员会审定为涉密学位论文时间：{\njut@cap@udldatefield}）%
+，于{\njut@cap@udldatefield}解密后适用本授权书。}
 \newcommand*{\njut@cap@license@title}{论文题名}
 \newcommand*{\njut@cap@license@studentnum}{{\njut@value@type}学号}
 \newcommand*{\njut@cap@license@department}{所在院系}
 \newcommand*{\njut@cap@license@grade}{学位年度}
 \newcommand*{\njut@cap@license@category}{论文级别}
-\newcommand*{\njut@cap@license@telphone}{作者电话}
-\newcommand*{\njut@cap@license@email}{作者Email}
+\newcommand*{\njut@cap@license@telphone}{作者联系电话：}
+\newcommand*{\njut@cap@license@email}{电子邮箱：}
+\newcommand*{\njut@cap@license@address}{联系地址（含邮编）：}
 \newcommand*{\njut@cap@license@supervisorname}{第一导师姓名}
 \newcommand*{\njut@cap@license@supervisortelphone}{导师电话}
 \newcommand*{\njut@cap@license@categoryhint}{（请在方框内画勾）}
@@ -1843,7 +1856,7 @@ A Dissertation Submitted for the Degree of {\textsc{\njut@value@en@degree}}
 \newcommand*{\njut@cap@license@categorymasterspec}{硕士专业学位}
 \newcommand*{\njut@cap@license@categoryphdspec}{博士专业学位}
 \newcommand*{\njut@cap@license@remark}{%
-注：请将该授权书填写后装订在学位论文最后一页（南大封面）。%
+(请在以上相应方框内打“$\checkmark$”)%
 }
 %    \end{macrocode}
 %
@@ -3300,23 +3313,7 @@ December\fi
 \newenvironment{abstract}{%
   \thispagestyle{empty}
   \pdfbookmark[0]{\njut@cap@abstract}{abstract}
-  \begin{center}
-    {\bf\kaishu\zihao{-2}%
-     \njutunderline{\njut@cap@abstract@chaptername}}
-  \end{center}
   \vspace{3mm}
-  {\kaishu\zihao{4}%
-  \noindent\njut@cap@abstract@title{：}%
-  \njutunderline[318pt]{\njut@value@abstract@titlea}\\
-  \noindent\njutunderline[\textwidth]{\njut@value@abstract@titleb}\\
-  \noindent\njutunderline[178pt]{\njut@value@major}%
-  \njut@cap@abstract@major%
-  \njutunderline[50pt]{\njut@value@grade}%
-  \njut@cap@abstract@author{：}%
-  \njutunderline[61pt]{\njut@value@author}\\
-  \noindent\njut@cap@abstract@supervisor{：}%
-  \njutunderline[248pt]{\njut@value@supervisor}\\
-  }
   \vspace{5mm}
   \begin{center}
     {\heiti\zihao{-3}\njut@cap@abstract@abstractname}
@@ -3365,21 +3362,6 @@ December\fi
 \newenvironment{englishabstract}{%
   \thispagestyle{empty}
   \pdfbookmark[0]{\njut@cap@abstract@en}{englishabstract}
-  \begin{center}
-    {\bf\kaishu\zihao{-2}%
-     \njutunderline{\njut@cap@abstract@en@chaptername}}
-  \end{center}
-  {\zihao{4}%
-   \njut@cap@abstract@en@title{:}~%
-   \njutunderline[360pt]{\njut@value@abstract@en@titlea}\\
-   \njutunderline[\textwidth]{\njut@value@abstract@en@titleb}\\
-   \njut@cap@abstract@en@major{:}~%
-   \njutunderline[298pt]{\njut@value@en@major}\\
-   \njut@cap@abstract@en@author{:}~%
-   \njutunderline[299pt]{\njut@value@en@author}\\
-   \njut@cap@abstract@en@supervisor{:}~%
-   \njutunderline[348pt]{\njut@value@en@supervisor}\\
-  }
   \vspace{5mm}
   \begin{center}
     {\bf\zihao{-3}\njut@cap@abstract@en@abstractname}
@@ -3487,7 +3469,19 @@ December\fi
 % 该命令生成一个由用户填写的日期域。
 %    \begin{macrocode}
 \newcommand*{\njut@cap@datefield}{%
-\njutunderline[1cm]{}{\njut@cap@year}%
+\makebox[1.2cm]{}{\njut@cap@year}%
+\makebox[1cm]{}{\njut@cap@month}%
+\makebox[1cm]{}{\njut@cap@day}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \begin{macro}{\njut@cap@udldatefield}
+% 该命令生成一个由用户填写的日期域，含下划线。
+%    \begin{macrocode}
+\newcommand*{\njut@cap@udldatefield}{%
+\njutunderline[1.2cm]{}{\njut@cap@year}%
 \njutunderline[1cm]{}{\njut@cap@month}%
 \njutunderline[1cm]{}{\njut@cap@day}
 }
@@ -3499,11 +3493,44 @@ December\fi
 %    \begin{macrocode}
 \newcommand*{\njut@license@makedeclaration}{%
 \par\njut@cap@license@declaration
+\par\vspace{1em}
+\noindent\njut@cap@license@securitylevel\par
+\noindent\ifthenelse{\equal{\njut@value@nlc@securitylevel}
+                           {\njut@cap@nlc@openlevel}}
+                    {{\zihao{4}$\Square$}}
+                    {{\zihao{-4}$\CheckedBox$}}%
+{\njut@cap@license@secret}\par
+\noindent\ifthenelse{\equal{\njut@value@nlc@securitylevel}
+                           {\njut@cap@nlc@openlevel}}
+                    {{\zihao{-4}$\CheckedBox$}}
+                    {{\zihao{4}$\Square$}}%
+{\njut@cap@license@public}\par%
+\vspace{0.5em}
+\njut@cap@license@remark%
 \vspace{5mm}
-\begin{flushright}
-  \njut@cap@license@sign\njutunderline[6cm]{}\\
-  \njut@cap@datefield\\
-\end{flushright}%
+\begin{flushleft}
+  \makebox[8em][l]{\njut@cap@license@sign}\makebox[4cm]{}
+  \njut@cap@license@date\njut@cap@datefield\\
+  \makebox[8em][l]{\njut@cap@license@supervisorsign}\makebox[4cm]{}
+  \njut@cap@license@date\njut@cap@datefield\\
+  \makebox[8em][l]{\njut@cap@license@telphone}\makebox[4cm]{}
+  \njut@cap@license@email\makebox[4cm]{}\\
+  \makebox[10em][l]{\njut@cap@license@address}\makebox[4cm]{}
+\end{flushleft}%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\njut@license@makedeclaration}
+% 该命令生成《学位论文出版授权书》中的原创性声明。
+%    \begin{macrocode}
+\newcommand*{\njut@license@makeorigindeclaration}{%
+\par\njut@cap@license@origindeclaration
+\vspace{5mm}
+\begin{flushleft}
+  \makebox[8em][l]{\njut@cap@license@sign}\makebox[4cm]{}
+  \njut@cap@license@date\njut@cap@datefield\\
+\end{flushleft}%
 }
 %    \end{macrocode}
 % \end{macro}
@@ -3567,32 +3594,24 @@ December\fi
 % \end{macro}
 %
 % \begin{macro}{\makelicense}
-% 该命令用于生成《学位论文出版授权书》。该授权书中的一些字段将根据用户所设置的文
+% 该命令用于生成《学位论文原创声明和出版授权书》。该授权书中的一些字段将根据用户所设置的文
 % 档属性自动填写。
 %    \begin{macrocode}
 \newcommand*{\makelicense}{%
   \thispagestyle{empty}
-  \nchapter{\njut@cap@license@chaptername}
+  \pdfbookmark[0]{\njut@cap@license@licensetitle}{license}
+  \begin{center}
+    {\bf\songti\zihao{2}
+    \njut@value@institute
+    \vskip 3pt
+    \njut@cap@license@origin}
+  \end{center}
+  \njut@license@makeorigindeclaration
+  \vskip 20pt
+  \begin{center}
+    {\bf\songti\zihao{2}\njut@cap@license@licensetitle}
+  \end{center}
   \njut@license@makedeclaration
-  \par\vspace{1em}
-  \njut@license@maketable
-  \par\vspace{1em}
-  \noindent\njut@cap@license@securitylevel\par
-  \noindent\ifthenelse{\equal{\njut@value@nlc@securitylevel}
-                             {\njut@cap@nlc@openlevel}}
-                      {{\zihao{-4}$\CheckedBox$}}
-                      {{\zihao{4}$\Square$}}%
-  {\njut@cap@license@public}\par
-  \noindent\ifthenelse{\equal{\njut@value@nlc@securitylevel}
-                             {\njut@cap@nlc@openlevel}}
-                      {{\zihao{4}$\Square$}}
-                      {{\zihao{-4}$\CheckedBox$}}%
-  {\njut@cap@license@secret}%
-  \njut@cap@datefield\hspace{0.5em}%
-  \njut@cap@to\hspace{0.5em}%
-  \njut@cap@datefield\par
-  \vspace{1em}
-  \noindent\njut@cap@license@remark%
   \normalfont
   \cleardoublepage
 }

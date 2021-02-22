@@ -910,23 +910,7 @@
 \newenvironment{abstract}{%
   \thispagestyle{empty}
   \pdfbookmark[0]{\njut@cap@abstract}{abstract}
-  \begin{center}
-    {\bf\kaishu\zihao{-2}%
-     \njutunderline{\njut@cap@abstract@chaptername}}
-  \end{center}
   \vspace{3mm}
-  {\kaishu\zihao{4}%
-  \noindent\njut@cap@abstract@title{：}%
-  \njutunderline[318pt]{\njut@value@abstract@titlea}\\
-  \noindent\njutunderline[\textwidth]{\njut@value@abstract@titleb}\\
-  \noindent\njutunderline[178pt]{\njut@value@major}%
-  \njut@cap@abstract@major%
-  \njutunderline[50pt]{\njut@value@grade}%
-  \njut@cap@abstract@author{：}%
-  \njutunderline[61pt]{\njut@value@author}\\
-  \noindent\njut@cap@abstract@supervisor{：}%
-  \njutunderline[248pt]{\njut@value@supervisor}\\
-  }
   \vspace{5mm}
   \begin{center}
     {\heiti\zihao{-3}\njut@cap@abstract@abstractname}
@@ -949,21 +933,6 @@
 \newenvironment{englishabstract}{%
   \thispagestyle{empty}
   \pdfbookmark[0]{\njut@cap@abstract@en}{englishabstract}
-  \begin{center}
-    {\bf\kaishu\zihao{-2}%
-     \njutunderline{\njut@cap@abstract@en@chaptername}}
-  \end{center}
-  {\zihao{4}%
-   \njut@cap@abstract@en@title{:}~%
-   \njutunderline[360pt]{\njut@value@abstract@en@titlea}\\
-   \njutunderline[\textwidth]{\njut@value@abstract@en@titleb}\\
-   \njut@cap@abstract@en@major{:}~%
-   \njutunderline[298pt]{\njut@value@en@major}\\
-   \njut@cap@abstract@en@author{:}~%
-   \njutunderline[299pt]{\njut@value@en@author}\\
-   \njut@cap@abstract@en@supervisor{:}~%
-   \njutunderline[348pt]{\njut@value@en@supervisor}\\
-  }
   \vspace{5mm}
   \begin{center}
     {\bf\zihao{-3}\njut@cap@abstract@en@abstractname}
@@ -1008,17 +977,49 @@
   \end{enumerate}
 }
 \newcommand*{\njut@cap@datefield}{%
-\njutunderline[1cm]{}{\njut@cap@year}%
+\makebox[1.2cm]{}{\njut@cap@year}%
+\makebox[1cm]{}{\njut@cap@month}%
+\makebox[1cm]{}{\njut@cap@day}
+}
+\newcommand*{\njut@cap@udldatefield}{%
+\njutunderline[1.2cm]{}{\njut@cap@year}%
 \njutunderline[1cm]{}{\njut@cap@month}%
 \njutunderline[1cm]{}{\njut@cap@day}
 }
 \newcommand*{\njut@license@makedeclaration}{%
 \par\njut@cap@license@declaration
+\par\vspace{1em}
+\noindent\njut@cap@license@securitylevel\par
+\noindent\ifthenelse{\equal{\njut@value@nlc@securitylevel}
+                           {\njut@cap@nlc@openlevel}}
+                    {{\zihao{4}$\Square$}}
+                    {{\zihao{-4}$\CheckedBox$}}%
+{\njut@cap@license@secret}\par
+\noindent\ifthenelse{\equal{\njut@value@nlc@securitylevel}
+                           {\njut@cap@nlc@openlevel}}
+                    {{\zihao{-4}$\CheckedBox$}}
+                    {{\zihao{4}$\Square$}}%
+{\njut@cap@license@public}\par%
+\vspace{0.5em}
+\njut@cap@license@remark%
 \vspace{5mm}
-\begin{flushright}
-  \njut@cap@license@sign\njutunderline[6cm]{}\\
-  \njut@cap@datefield\\
-\end{flushright}%
+\begin{flushleft}
+  \makebox[8em][l]{\njut@cap@license@sign}\makebox[4cm]{}
+  \njut@cap@license@date\njut@cap@datefield\\
+  \makebox[8em][l]{\njut@cap@license@supervisorsign}\makebox[4cm]{}
+  \njut@cap@license@date\njut@cap@datefield\\
+  \makebox[8em][l]{\njut@cap@license@telphone}\makebox[4cm]{}
+  \njut@cap@license@email\makebox[4cm]{}\\
+  \makebox[10em][l]{\njut@cap@license@address}\makebox[4cm]{}
+\end{flushleft}%
+}
+\newcommand*{\njut@license@makeorigindeclaration}{%
+\par\njut@cap@license@origindeclaration
+\vspace{5mm}
+\begin{flushleft}
+  \makebox[8em][l]{\njut@cap@license@sign}\makebox[4cm]{}
+  \njut@cap@license@date\njut@cap@datefield\\
+\end{flushleft}%
 }
 \newcommand*{\njut@license@maketable}{%
 \noindent\zihao{5}%
@@ -1074,27 +1075,19 @@
 }
 \newcommand*{\makelicense}{%
   \thispagestyle{empty}
-  \nchapter{\njut@cap@license@chaptername}
+  \pdfbookmark[0]{\njut@cap@license@licensetitle}{license}
+  \begin{center}
+    {\bf\songti\zihao{2}
+    \njut@value@institute
+    \vskip 3pt
+    \njut@cap@license@origin}
+  \end{center}
+  \njut@license@makeorigindeclaration
+  \vskip 20pt
+  \begin{center}
+    {\bf\songti\zihao{2}\njut@cap@license@licensetitle}
+  \end{center}
   \njut@license@makedeclaration
-  \par\vspace{1em}
-  \njut@license@maketable
-  \par\vspace{1em}
-  \noindent\njut@cap@license@securitylevel\par
-  \noindent\ifthenelse{\equal{\njut@value@nlc@securitylevel}
-                             {\njut@cap@nlc@openlevel}}
-                      {{\zihao{-4}$\CheckedBox$}}
-                      {{\zihao{4}$\Square$}}%
-  {\njut@cap@license@public}\par
-  \noindent\ifthenelse{\equal{\njut@value@nlc@securitylevel}
-                             {\njut@cap@nlc@openlevel}}
-                      {{\zihao{4}$\Square$}}
-                      {{\zihao{-4}$\CheckedBox$}}%
-  {\njut@cap@license@secret}%
-  \njut@cap@datefield\hspace{0.5em}%
-  \njut@cap@to\hspace{0.5em}%
-  \njut@cap@datefield\par
-  \vspace{1em}
-  \noindent\njut@cap@license@remark%
   \normalfont
   \cleardoublepage
 }
