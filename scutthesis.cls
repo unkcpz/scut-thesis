@@ -489,8 +489,7 @@
 \renewcommand{\arraystretch}{1.38}%
 \njut@oldtabular}%
 {\njut@endoldtabular\egroup}
-\geometry{headheight=2.6cm,headsep=3mm,footskip=13mm}
-\geometry{top=3.5cm,bottom=3.5cm,left=3.2cm,right=3.2cm}
+\geometry{top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm}
 \def\njut@CJK@charwidth{\hskip \f@size \p@}
 \newdimen\njut@CJK@chardimen
 \settowidth\njut@CJK@chardimen{\njut@CJK@charwidth\CJKglue}
