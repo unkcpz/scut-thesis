@@ -836,7 +836,6 @@
   \end{tabular}
 }
 \newcommand*{\njut@covertable@title}{
-    \njutunderline[420pt]{\njut@cap@cover@title}
     \njutunderline[420pt]{\njut@value@titlea}
     \njutunderline[420pt]{\njut@value@titleb}
 }
