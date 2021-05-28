@@ -2524,59 +2524,60 @@ December\fi
 %
 % 设置章节格式如下：
 % \begin{description}
-% \item[零级节标题] 命令为\cs{chapter}，格式为一号黑体，居中排列，段前空4ex，段后空3ex；
-% \item[一级节标题] 命令为\cs{section}，格式为小二号黑体，左排列，段前空3.5ex，段后空2.3ex；
-% \item[二级节标题] 命令为\cs{subsection}，格式为三号黑体，左排列，段前空3.0ex，段后空1.5ex；
-% \item[三级节标题] 命令为\cs{subsubsection}，格式为小三号黑体，左排列，段前空2.5ex，段后空1.5ex；
-% \item[四级节标题] 命令为\cs{paragraph}，格式为四号黑体，左排列，段前空2.0ex，段后空1ex；
-% \item[五级节标题] 命令为\cs{subparagraph}，格式为小四号黑体，左排列，段前空1.5ex，段后空1ex；
+% \item 模板要求：章、节、条三级标题为单倍行距，段前、段后各设为0.5行（即前后各空0.5行），这里均采用2.5ex
+% \item[零级节标题] 命令为\cs{chapter}，格式为小二号黑体，居中排列
+% \item[一级节标题] 命令为\cs{section}，格式为小三号黑体，左排列
+% \item[二级节标题] 命令为\cs{subsection}，格式为四号黑体，左排列
+% \item[三级节标题] 命令为\cs{subsubsection}，格式为小四号黑体，左排列
+% \item[四级节标题] 命令为\cs{paragraph}，格式为三号黑体，左排列
+% \item[五级节标题] 命令为\cs{subparagraph}，格式为小三号黑体，左排列
 % \end{description}
 %
 % 使用|titlesec|宏包提供的\cs{titleformat}和\cs{titlespacing}命令可以方便地设置标题
 % 的样式：
 %    \begin{macrocode}
 \titleformat{\chapter}[hang]
-            {\centering\zihao{1}\bfseries}
+            {\centering\zihao{-2}\bfseries}
             {\chaptertitlename}{1em}{}
 \titlespacing{\chapter}
              {0pt}
-             {*4}
-             {*3}
+             {*2.5}
+             {*2.5}
 \titleformat{\section}[hang]
-            {\zihao{-2}\bfseries}
+            {\zihao{-3}\bfseries}
             {\thesection}{1em}{}
 \titlespacing{\section}
              {0pt}
-             {*3.5}
-             {*2.3}
+             {*2.5}
+             {*2.5}
 \titleformat{\subsection}[hang]
-            {\zihao{3}\bfseries}
+            {\zihao{4}\bfseries}
             {\thesubsection}{1em}{}
 \titlespacing{\subsection}
              {0pt}
-             {*3}
-             {*1.5}
+             {*2.5}
+             {*2.5}
 \titleformat{\subsubsection}[hang]
-            {\zihao{-3}\bfseries}
+            {\zihao{-4}\bfseries}
             {\thesubsubsection}{1em}{}
 \titlespacing{\subsubsection}
              {0pt}
              {*2.5}
-             {*1.5}
+             {*2.5}
 \titleformat{\paragraph}[hang]
-            {\zihao{4}\bfseries}
+            {\zihao{3}\bfseries}
             {}{0em}{}
 \titlespacing{\paragraph}
              {0pt}
-             {*2}
-             {*1}
+             {*2.5}
+             {*2.5}
 \titleformat{\subparagraph}[hang]
-            {\zihao{-4}\bfseries}
+            {\zihao{-3}\bfseries}
             {}{0em}{}
 \titlespacing{\subparagraph}
              {0pt}
-             {*1.5}
-             {*1}
+             {*2.5}
+             {*2.5}
 %    \end{macrocode}
 %
 % 设置章节标题编号最多到第4层（即\cs{subsubsection}），超过第四层的章节不再自动编号。
@@ -3150,7 +3151,7 @@ December\fi
 % 无页眉页脚的空白页。
 %    \begin{macrocode}
 \newcommand*{\makenlctitle}{%
-  \thispagestyle{empty} % Both header and footer are empty.
+  \thispagestyle{plain} % Both header and footer are empty.
   \pdfbookmark[0]{\njut@cap@nlc}{nlc}
   {\heiti\zihao{4}
     \noindent\makebox[40pt][l]{\njut@cap@nlc@classification}
@@ -3328,7 +3329,7 @@ December\fi
 % \cs{cleardoublepage}命令来插入无页眉页脚的空白页。
 %    \begin{macrocode}
 \newenvironment{abstract}{%
-  \thispagestyle{empty}
+  \thispagestyle{plain}
   \pdfbookmark[0]{\njut@cap@abstract}{abstract}
   \vspace{3mm}
   \vspace{5mm}
@@ -3377,7 +3378,7 @@ December\fi
 % \cs{cleardoublepage}命令来插入无页眉页脚的空白页。
 %    \begin{macrocode}
 \newenvironment{englishabstract}{%
-  \thispagestyle{empty}
+  \thispagestyle{plain}
   \pdfbookmark[0]{\njut@cap@abstract@en}{englishabstract}
   \vspace{5mm}
   \begin{center}
@@ -3919,6 +3920,12 @@ December\fi
 \makeatletter
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
   \hbox{}\thispagestyle{empty}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
+% 默认的frontmatter部分页码为小写罗马字，改为大写罗马字
+\makeatletter
+\renewcommand{\@memfront}{%
+  \@smemfront\pagenumbering{Roman}}
 \makeatother
 
 % 文章用A4纸标准大小的白纸打印，页眉：2.6cm，页脚：2.4cm
