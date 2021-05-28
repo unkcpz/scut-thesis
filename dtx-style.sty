@@ -139,18 +139,6 @@
 \predate{\begin{center}\large}
 \postdate{\par\end{center}}
 
-\renewcommand{\tableofcontents}{%
-    \if@twocolumn
-      \@restonecoltrue\onecolumn
-    \else
-      \@restonecolfalse
-    \fi
-    \section*{\hfill\contentsname\hfill}%
-    \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
-    \@starttoc{toc}%
-    \if@restonecol\twocolumn\fi
-}
-
 \newcolumntype{C}[1]{>{\centering\let\newline\\%
     \arraybackslash\hspace{0pt}}p{#1}}
 
@@ -193,21 +181,6 @@
 \newcommand*{\std}[1]{{\normalfont #1}}
 
 %% \newcommand{\env}[1]{\texttt{#1}}
-
-\makeatletter
-\renewcommand*{\tableofcontents}{%
-    \if@twocolumn
-      \@restonecoltrue\onecolumn
-    \else
-      \@restonecolfalse
-    \fi
-    \section*{\hfill\contentsname\hfill}%
-    \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
-    \addcontentsline{toc}{section}{\contentsname}%
-    \@starttoc{toc}%
-    \if@restonecol\twocolumn\fi
-}
-\makeatother
 
 \IndexPrologue{\clearpage\section*{\hfill\indexname\hfill}%
 \markboth{\indexname}{\indexname}%

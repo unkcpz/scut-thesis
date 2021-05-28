@@ -506,11 +506,12 @@
 }
 \fancyfoot[C]{\thepage}
 \renewcommand{\footrulewidth}{0pt}
-\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\headrulewidth}{1.5pt}
 \fancyhead{}  % override fancyhead to none.
-\fancyhead[CE]{华南理工大学{\njut@value@degree}学位论文}
-\fancyhead[CO]{\leftmark}
+\fancyhead[CE]{\songti \zihao{5} 华南理工大学{\njut@value@degree}学位论文}
+\fancyhead[CO]{\songti \zihao{5} \leftmark}
 \pagestyle{fancy}
+\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
 \renewcommand{\chaptermark}[1]{\markboth{%
  \bfseries\if@mainmatter\chaptertitlename\hspace{1em}\fi{#1}%
 }{}}
@@ -597,6 +598,9 @@
     \endgroup
   \fi}
 \renewcommand*{\tableofcontents}{%
+  % 需要额外的一个括号把pagestyle限制在该部分
+  {
+    \pagestyle{plain} % Both header and footer are empty.
     \if@twocolumn
       \@restonecoltrue\onecolumn
     \else
@@ -606,8 +610,13 @@
     \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
     \@starttoc{toc}%
     \if@restonecol\twocolumn\fi
+    \clearpage
+  }
 }
 \renewcommand*{\listoftables}{%
+  % 需要额外的一个括号把pagestyle限制在该部分
+  {
+    \pagestyle{plain} % Both header and footer are empty.
     \if@twocolumn
       \@restonecoltrue\onecolumn
     \else
@@ -617,8 +626,13 @@
     \@mkboth{\MakeUppercase\listtablename}{\MakeUppercase\listtablename}%
     \@starttoc{lot}%
     \if@restonecol\twocolumn\fi
+    \clearpage
+  }
 }
 \renewcommand*{\listoffigures}{%
+  % 需要额外的一个括号把pagestyle限制在该部分
+  {
+    \pagestyle{plain} % Both header and footer are empty.
     \if@twocolumn
       \@restonecoltrue\onecolumn
     \else
@@ -628,6 +642,8 @@
     \@mkboth{\MakeUppercase\listfigurename}{\MakeUppercase\listfigurename}%
     \@starttoc{lof}%
     \if@restonecol\twocolumn\fi
+    \clearpage
+  }
 }
 \renewenvironment{thebibliography}[1]
      {\nchapter{\bibname}%
