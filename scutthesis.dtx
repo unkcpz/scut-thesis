@@ -1632,6 +1632,7 @@
 \newcommand*{\njut@cap@tablename}{表}
 \newcommand*{\njut@cap@preface}{前\hspace{2em}言}
 \newcommand*{\njut@cap@acknowledgementname}{致\hspace{2em}谢}
+\newcommand*{\njut@cap@conclusion}{结\hspace{2em}论}
 \newcommand*{\njut@cap@appendixname}{附录\thechapter}
 %    \end{macrocode}
 %
@@ -2749,13 +2750,6 @@ December\fi
 }}
 %    \end{macrocode}
 %
-% 另一个麻烦的问题是：默认的|fancy|风格会在每一章最后的空白页（由于是双面打印）
-% 也加上页眉页脚，但我们通常不希望如此。解决方法是修改{\LaTeX}内部的\cs{cleardoublepage}
-% 命令的定义如下：
-%    \begin{macrocode}
-\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
-  \hbox{}\thispagestyle{empty}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
-%    \end{macrocode}
 %
 % \subsection{列表环境}
 %
@@ -3416,6 +3410,15 @@ December\fi
 %
 % \subsection{致谢章节}
 %
+% \begin{environment}{conclusion}
+% 该环境用于``结论''页。
+%    \begin{macrocode}
+\newenvironment{conclusion}{%
+  \nchapter{\njut@cap@conclusion}
+}{}
+%    \end{macrocode}
+% \end{environment}
+%
 % \begin{environment}{acknowledgement}
 % 该环境用于``致谢''页。
 %    \begin{macrocode}
@@ -3914,13 +3917,6 @@ December\fi
 \setlist[itemize,1]{label=$\bullet$}
 \setlist[itemize,2]{label=$\blacksquare$}
 \setlist[itemize,3]{label=$\Diamondblack$}
-
-% 默认的|fancy|风格会在每一章最后的空白页（由于是双面打印）也加上页眉页脚，但我
-% 们通常不希望如此。解决方法是修改{\LaTeX}内部的\cleardoublepage命令的定义如下：
-\makeatletter
-\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
-  \hbox{}\thispagestyle{empty}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
-\makeatother
 
 % 默认的frontmatter部分页码为小写罗马字，改为大写罗马字
 \makeatletter
