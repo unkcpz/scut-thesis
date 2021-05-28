@@ -2622,7 +2622,7 @@ December\fi
 % 而这样定义之后，对不同尺寸的字体都会按同样的比例因子1.38放大行间距，使得全文排
 % 版能协调一致。
 %    \begin{macrocode}
-\renewcommand*{\baselinestretch}{1.38}
+\renewcommand*{\baselinestretch}{1.48}
 %    \end{macrocode}
 %
 % 修改|tabular|环境，设置表格中的行间距为正文行间距。
@@ -2631,7 +2631,7 @@ December\fi
 \let\njut@endoldtabular\endtabular
 \renewenvironment{tabular}%
 {\bgroup%
-\renewcommand{\arraystretch}{1.38}%
+\renewcommand{\arraystretch}{1.48}%
 \njut@oldtabular}%
 {\njut@endoldtabular\egroup}
 %    \end{macrocode}
@@ -2741,6 +2741,15 @@ December\fi
  \bfseries\if@mainmatter\chaptertitlename\hspace{1em}\fi{#1}%
 }{}}
 %    \end{macrocode}
+%
+% 另一个麻烦的问题是：默认的|fancy|风格会在每一章最后的空白页（由于是双面打印）
+% 也加上页眉页脚，但我们通常不希望如此。解决方法是修改{\LaTeX}内部的\cs{cleardoublepage}
+% 命令的定义如下：
+%    \begin{macrocode}
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+  \hbox{}\thispagestyle{empty}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+%    \end{macrocode}
+%
 %
 % 重新定义|sectionmark|，让其显示当前节信息。注意下面的重定义必须放在第一次调用
 % |\pagestyle{fancy}|之后，因为第一次调用该命令会设置\cs{sectionmark}。
@@ -3145,7 +3154,7 @@ December\fi
 % 无页眉页脚的空白页。
 %    \begin{macrocode}
 \newcommand*{\makenlctitle}{%
-  \thispagestyle{plain} % Both header and footer are empty.
+  \thispagestyle{empty} % Both header and footer are empty.
   \pdfbookmark[0]{\njut@cap@nlc}{nlc}
   {\heiti\zihao{4}
     \noindent\makebox[40pt][l]{\njut@cap@nlc@classification}
@@ -3323,7 +3332,7 @@ December\fi
 % \cs{cleardoublepage}命令来插入无页眉页脚的空白页。
 %    \begin{macrocode}
 \newenvironment{abstract}{%
-  \thispagestyle{plain}
+  \pagestyle{plain}
   \pdfbookmark[0]{\njut@cap@abstract}{abstract}
   \vspace{3mm}
   \vspace{5mm}
@@ -3372,7 +3381,7 @@ December\fi
 % \cs{cleardoublepage}命令来插入无页眉页脚的空白页。
 %    \begin{macrocode}
 \newenvironment{englishabstract}{%
-  \thispagestyle{plain}
+  \pagestyle{plain}
   \pdfbookmark[0]{\njut@cap@abstract@en}{englishabstract}
   \vspace{5mm}
   \begin{center}
@@ -3913,16 +3922,17 @@ December\fi
   labelwidth=2em,           % 包含标签的盒子的正常宽度；若实际宽度更宽，则使用实际宽度。
 }
 
+% 默认的|fancy|风格会在每一章最后的空白页（由于是双面打印）也加上页眉页脚，但我
+% 们通常不希望如此。解决方法是修改{\LaTeX}内部的\cleardoublepage命令的定义如下：
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+  \hbox{}\thispagestyle{empty}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
+
 % 设置无序列表的标签符号。
 \setlist[itemize,1]{label=$\bullet$}
 \setlist[itemize,2]{label=$\blacksquare$}
 \setlist[itemize,3]{label=$\Diamondblack$}
-
-% 默认的frontmatter部分页码为小写罗马字，改为大写罗马字
-\makeatletter
-\renewcommand{\@memfront}{%
-  \@smemfront\pagenumbering{Roman}}
-\makeatother
 
 % 文章用A4纸标准大小的白纸打印，页眉：2.6cm，页脚：2.4cm
 \geometry{headheight=2.6cm,headsep=3mm,footskip=13mm}
