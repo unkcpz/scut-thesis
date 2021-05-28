@@ -201,6 +201,9 @@
 % 开始正文部分
 \mainmatter
 
+% 使用下面语句手动关闭强制章节右(奇数页)起
+\csname @openrightfalse\endcsname
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 学位论文的正文应以《绪论》作为第一章
 \chapter{绪论}\label{chapter_introduction}
@@ -1215,7 +1218,6 @@ $P(k)$称为该网络的度分布。
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 学位论文的正文应以《结论》作为最后一章
-\cleardoublepage
 \begin{conclusion}\label{chapter_concludes}
 
 本文在第\ref{chapter_smallworld}章中，通过考虑数据中心网络布局构建中的最大度限制
