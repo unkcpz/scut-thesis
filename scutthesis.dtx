@@ -1632,7 +1632,7 @@
 \newcommand*{\njut@cap@tablename}{表}
 \newcommand*{\njut@cap@preface}{前\hspace{2em}言}
 \newcommand*{\njut@cap@acknowledgementname}{致\hspace{2em}谢}
-\newcommand*{\njut@cap@conclusion}{结\hspace{1em}论\hspace{1em}和\hspace{1em}展\hspace{1em}望}
+\newcommand*{\njut@cap@conclusion}{结\hspace{2em}论}
 \newcommand*{\njut@cap@appendixname}{附录\thechapter}
 %    \end{macrocode}
 %
@@ -2542,7 +2542,7 @@ December\fi
             {\chaptertitlename}{1em}{}
 \titlespacing{\chapter}
              {0pt}
-             {*2.5}
+             {*-2}
              {*2.5}
 \titleformat{\section}[hang]
             {\zihao{-3}\bfseries}
@@ -2900,12 +2900,17 @@ December\fi
   % 需要额外的一个括号把pagestyle限制在该部分
   {
     \pagestyle{plain} % Both header and footer are empty.
+    \pdfbookmark[0]{\contentsname}{contentsname}
+    \vspace{3mm}
+    \vspace{5mm}
+    {\begin{center}
+      {\heiti\zihao{-3}\contentsname}
+    \end{center}}
     \if@twocolumn
       \@restonecoltrue\onecolumn
     \else
       \@restonecolfalse
     \fi
-    \nchapter{\contentsname}%
     \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
     \@starttoc{toc}%
     \if@restonecol\twocolumn\fi
@@ -3333,12 +3338,7 @@ December\fi
 %    \begin{macrocode}
 \newenvironment{abstract}{%
   \pagestyle{plain}
-  \pdfbookmark[0]{\njut@cap@abstract}{abstract}
-  \vspace{3mm}
-  \vspace{5mm}
-  \begin{center}
-    {\heiti\zihao{-3}\njut@cap@abstract@abstractname}
-  \end{center}%
+  \nchapter{\njut@cap@abstract@abstractname}
   \normalsize\par%
 }{%
   \cleardoublepage
@@ -3382,11 +3382,7 @@ December\fi
 %    \begin{macrocode}
 \newenvironment{englishabstract}{%
   \pagestyle{plain}
-  \pdfbookmark[0]{\njut@cap@abstract@en}{englishabstract}
-  \vspace{5mm}
-  \begin{center}
-    {\bf\zihao{-3}\njut@cap@abstract@en@abstractname}
-  \end{center}%
+  \nchapter{\njut@cap@abstract@en@abstractname}
   \normalsize\par%
 }{%
   \cleardoublepage
