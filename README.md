@@ -1,8 +1,9 @@
-# SCUT-Thesis
+# 华南理工大学学位论文Latex模板 SCUT-Thesis
 该模板从南京大学学位论文模板项目版本Aug 8, 2018时的[commit-40387c1](https://github.com/Haixing-Hu/nju-thesis/commit/04387c17e758a89dbb140ca0c34fa72696954ac3)fork而来，保留先前所有提交并加入华南理工大学学位论文的相关要求。
 
 该模板旨在提供符合华南理工大学学位论文排版规范的latex模板，通过修改原项目中的`dtx`模板定义文件和替换原项目中与南京大学相关的logo排版要求等，以符合华南理工大学学位论文排版规范。
-该仓库用于存放用于模板文档与生成模板文件所需的原文件、生成的模板文件。推荐直接通过overleaf上的对应[模板项目]()直接使用该模板。
+
+<!-- 该仓库用于存放用于模板文档与生成模板文件所需的原文件、生成的模板文件。推荐直接通过overleaf上的对应[模板项目]()直接使用该模板。 -->
 
 该模板严格遵循华南理工大学学术委员会对学位论文的排版格式要求以及相应的国家标准规范，可帮助华南理工大学的同学们方便地排版出漂亮的学位论文。
 
@@ -18,7 +19,7 @@
 ## 功能特色
 
 * 此模版用于生成符合华南理工大学学位论文排版要求和相应的国家规范、行业标准的学位论文；
-* （？）可排版博士、硕士、学士学位论文；
+* 可排版博士(已测试)、硕士、学士学位论文；
 * 使用XeLaTeX作为排版引擎，论文源码需要使用UTF-8编码；
 * 自动生成国家图书馆封面、中文封面、英文封面、中文摘要页、英文摘要页、学位论文出版授权书等必需页面；
 
@@ -27,7 +28,7 @@
 * [【GB/T 7713.1-2006】学位论文编写规则][gbt7713.1-2006]
 * [【GB/T 7714-2005】文后参考文献著录规则][gbt7714-2005]
 * [【GB/T 6447-1986】文摘编写规则][gbt6447-1986]
-* [【GB/T 13417-2009】期刊目次表][gbt13417-2009]
+<!-- * [【GB/T 13417-2009】期刊目次表][gbt13417-2009] -->
 * [【CY/T 35-2001】科技文献的章节编号方法][cyt35-2001]
 * [【GB/T 3469-1983】文献类型与文献载体代码][gbt3469-1983]
 * [【GB/T 7156-2003】文献保密等级代码与标识][gbt7156-2003]
@@ -55,17 +56,19 @@
 
 [gbt12450-2001]: https://github.com/Haixing-Hu/typesetting-standard/raw/master/%E5%85%B6%E4%BB%96/%E3%80%90GB:T%2012450-2001%E3%80%91%E5%9B%BE%E4%B9%A6%E4%B9%A6%E5%90%8D%E9%A1%B5.pdf
 
-## 安装使用（？）
+## 安装使用
 
 编译此模板前需在系统中安装Adobe中文字体：<https://github.com/Haixing-Hu/font/tree/master/unicode>
 
 参见[模板文档][templatedoc]和[用户手册][manual]中相关章节的详细说明。
 
-推荐直接通过overleaf上的对应[模板项目][overleaf]直接使用该模板。
+仅需将`scutthesis.cls`和`scutthesis.cfg` 拷贝到latex项目文件夹中。
+拷贝并编辑`sample.tex`(可重命名)。执行`make all` 编译文件。
+具体项目可以参考我的博士论文的[tex仓库]。
 
 [templatedoc]: https://raw.github.com/Haixing-Hu/nju-thesis/master/njuthesis.pdf
 [manual]: https://raw.github.com/Haixing-Hu/nju-thesis/master/manual/njuthesis-manual.pdf
-[overleaf]: https://eee.com
+[tex仓库]: https://github.com/unkcpz/thesis-yu
 
 ## 相关项目
 
@@ -78,4 +81,3 @@
 [nju-report]: https://github.com/Haixing-Hu/nju-report
 [gbt7714-2005-bst]: https://github.com/Haixing-Hu/GBT7714-2005-BibTeX-Style
 [typesetting-standard]: https://github.com/Haixing-Hu/typesetting-standard
-
